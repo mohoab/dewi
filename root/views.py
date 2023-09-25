@@ -12,3 +12,5 @@ def homepage(request):
     return render(request,'root/index.html',context=contexts)
 def inner(request):
     return render(request,'root/inner-page.html')
+def products(request):
+    return render(request,'root/courses.html')

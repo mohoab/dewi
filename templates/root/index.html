@@ -164,6 +164,7 @@
     <!-- ======= Features Section ======= -->
     <section id="features" class="features">
       <div class="container" data-aos="fade-up">
+
 {% for ques in questions %}
         <ul class="nav nav-tabs row d-flex">
           </li>
@@ -200,10 +201,10 @@
           <p>Check our Services</p>
         </div>
         {% for sr in services %}
-        <div class="row" data-aos="fade-up" data-aos-delay="200">
+        <div class="row" data-aos="fade-up" data-aos-delay="200" style="width: 90% ;float: left;;clear: both;">
           <div class="col-md-6">
             <div class="icon-box">
-              <i class="bi bi-laptop"></i>
+              <i class="bi bi-laptop" style="width: 100% ;float: left;;clear: both;"></i>
               <h4>{{sr.title}}</h4>
               <p>{{sr.content}}</p>
             </div>

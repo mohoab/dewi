@@ -108,13 +108,15 @@ class Image(models.Model):
         return self.title
     class Meta:
         ordering = ['-created_date']
-class Portfolio(models.Model):
+class Products(models.Model):
     title=models.CharField(max_length=75)
     content = models.TextField()
     image = models.ManyToManyField(Image)
     price = models.IntegerField(default=0)
     category=models.ManyToManyField(Category)
     brand=models.ManyToManyField(Brand)
+    counted_view = models.IntegerField(default=0)
+    counted_like = models.IntegerField(default=0)
     status = models.BooleanField(default=True)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
