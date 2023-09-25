@@ -2,7 +2,7 @@ from django.db import models
 
 class Info(models.Model):
     title = models.CharField(max_length=10)
-    years = models.IntegerField(max_length=2,default=1)
+    years = models.IntegerField(default=1)
     orders = models.IntegerField(default=0)
     status = models.BooleanField(default=True)
     created_date = models.DateTimeField(auto_now_add=True)
@@ -32,7 +32,8 @@ class Future(models.Model):
     class Meta:
         ordering = ['-created_date']
 class Question(models.Model):
-    que=models.CharField(max_length=100)
+    que=models.CharField(max_length=50)
+    title =models.CharField(max_length=50)
     awnser=models.TextField()
     status = models.BooleanField(default=True )
     created_date = models.DateTimeField(auto_now_add=True)
