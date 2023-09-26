@@ -79,22 +79,23 @@ class Brand(models.Model):
     class Meta:
         ordering = ['-created_date']
 
-class Deepcat(models.Model):
-    title=models.CharField(max_length=50)
-    status = models.BooleanField(default=True)
-    created_date = models.DateTimeField(auto_now_add=True)
-    updated_date = models.DateTimeField(auto_now=True)
-    catname=models.CharField(max_length=50)
-    def __str__(self):
-        return self.title
-    class Meta:
-        ordering = ['-created_date']
+
 
 class Category(models.Model):
     title=models.CharField(max_length=50)
     status = models.BooleanField(default=True)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return self.title
+    class Meta:
+        ordering = ['-created_date']
+class Deepcat(models.Model):
+    title=models.CharField(max_length=50)
+    status = models.BooleanField(default=True)
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
+    catname=models.ForeignKey(Category , on_delete=models.CASCADE)
     def __str__(self):
         return self.title
     class Meta:
@@ -108,12 +109,14 @@ class Image(models.Model):
         return self.title
     class Meta:
         ordering = ['-created_date']
-class Products(models.Model):
+class Product(models.Model):
     title=models.CharField(max_length=75)
     content = models.TextField()
+    brand = models.ForeignKey(Brand , on_delete=models.CASCADE)
     image = models.ManyToManyField(Image)
     price = models.IntegerField(default=0)
-    category=models.ManyToManyField(Category)
+    category=models.ForeignKey(Category,on_delete=models.CASCADE)
+    deepcat = models.ForeignKey(Deepcat , on_delete=models.CASCADE)
     brand=models.ManyToManyField(Brand)
     counted_view = models.IntegerField(default=0)
     counted_like = models.IntegerField(default=0)
