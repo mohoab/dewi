@@ -23,7 +23,7 @@ class About(models.Model):
 class Future(models.Model):
     title = models.CharField(max_length=50)
     content= models.CharField(max_length=150)
-    img= models.ImageField(upload_to='images/future',default='images/default/default.png')
+    img = models.ImageField(upload_to='image/future',default='images/default/default.png')
     status = models.BooleanField(default=False)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
@@ -64,9 +64,14 @@ class Contact(models.Model):
     linkdin=models.TextField(null=True)
     facebook=models.TextField(null=True)
     skype=models.TextField(null=True)
+    status = models.BooleanField(default=False)
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
+    class Meta:
+        ordering = ['-created_date']
 
 class Brand(models.Model):
     name=models.CharField(max_length=50)
@@ -102,7 +107,7 @@ class Deepcat(models.Model):
         ordering = ['-created_date']
 class Image(models.Model):
     title=models.CharField(max_length=50)
-    img=models.ImageField(upload_to='image/portfolio',default='images/default/default.png')
+    img=models.ImageField(upload_to='image/portfolio',default='image/default/default.png')
     status = models.BooleanField(default=True)
     created_date = models.DateTimeField(auto_now_add=True)
     def __str__(self):
@@ -118,7 +123,7 @@ class Product(models.Model):
     price = models.IntegerField(default=0)
     category=models.ForeignKey(Category,on_delete=models.CASCADE)
     deepcat = models.ForeignKey(Deepcat , on_delete=models.CASCADE)
-    brand=models.ManyToManyField(Brand)
+    brand=models.ForeignKey(Brand,on_delete=models.CASCADE)
     counted_view = models.IntegerField(default=0)
     counted_like = models.IntegerField(default=0)
     status = models.BooleanField(default=True)
