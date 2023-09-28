@@ -113,6 +113,7 @@ class Product(models.Model):
     title=models.CharField(max_length=75)
     content = models.TextField()
     brand = models.ForeignKey(Brand , on_delete=models.CASCADE)
+    mojoodi=models.IntegerField(default=0)
     image = models.ManyToManyField(Image)
     price = models.IntegerField(default=0)
     category=models.ForeignKey(Category,on_delete=models.CASCADE)

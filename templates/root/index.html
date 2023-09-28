@@ -27,34 +27,35 @@
               <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
                 <div class="count-box">
                   <i class="bi bi-emoji-smile"></i>
-                  <span data-purecounter-start="0" data-purecounter-end="125" data-purecounter-duration="1" class="purecounter"></span>
-                  <p>Happy Clients</p>
+                  <span data-purecounter-start="0" data-purecounter-end="{{uc}}" data-purecounter-duration="1" class="purecounter"></span>
+                  <p>User</p>
                 </div>
               </div>
 
               <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
                 <div class="count-box">
                   <i class="bi bi-journal-richtext"></i>
-                  <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="1" class="purecounter"></span>
-                  <p>Projects</p>
+                  <span data-purecounter-start="0" data-purecounter-end="{{p_number}}" data-purecounter-duration="1" class="purecounter"></span>
+                  <p>Products>
                 </div>
               </div>
 
               <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
                 <div class="count-box">
                   <i class="bi bi-clock"></i>
-                  <span data-purecounter-start="0" data-purecounter-end="35" data-purecounter-duration="1" class="purecounter"></span>
+                  <span data-purecounter-start="0" data-purecounter-end="{{info.years}}" data-purecounter-duration="1" class="purecounter"></span>
                   <p>Years of experience</p>
                 </div>
               </div>
+            </div>
 
-              <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
-                <div class="count-box">
-                  <i class="bi bi-award"></i>
-                  <span data-purecounter-start="0" data-purecounter-end="48" data-purecounter-duration="1" class="purecounter"></span>
-                  <p>Awards</p>
-                </div>
+            <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+              <div class="count-box">
+                <i class="bi bi-award"></i>
+                <span data-purecounter-start="0" data-purecounter-end="{{info.orders}}" data-purecounter-duration="1" class="purecounter"></span>
+                <p>Orders</p>
               </div>
+
 
             </div>
           </div>
@@ -235,14 +236,14 @@
         </div>
 
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-          {% for pr in products %}
+          {% for pru in product %}
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src={{pr.image.url}} class="img-fluid" alt="">
+            <img src={{pru.image.url}} class="img-fluid" alt="">
             <div class="portfolio-info">
-              <h4>{{pr.title}}</h4>
-              <p>{{pr.category}}/{{pr.category.deepcat}}</p>
-              <p>{{pr.price}}</p>
-              <a href="{{pr.image.url}}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
+              <h4>{{pru.title}}</h4>
+              <p>{{pru.category}}/{{pru.category.deepcat}}</p>
+              <p>{{pru.price}}</p>
+              <a href="{{pru.image.url}}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
               <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>

@@ -1,19 +1,21 @@
 from django.shortcuts import render
-from .models import *
+from .models import Question,Service,Product,Info
+from django.contrib.auth.models import User
 
 def homepage(request):
     que = Question.objects.filter(status=True)[:4]
     services = Service.objects.filter(status=True)[:6]
     products_number = Product.objects.filter(status=True).count()
     products = Product.objects.all()
-    info = Info.objects.filter(status=True)[:1]
-
+    info = Info.objects.all()
+    user_c = User.objects.all().count()
     contexts = {
         'questions': que ,
         'services': services,
         'p_number':products_number , 
         'products': products ,
         'info': info ,
+        'uc' : user_c ,
         
 
     }
