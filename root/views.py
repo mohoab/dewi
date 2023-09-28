@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Question,Service,Product,Info
+from .models import Question,Service,Product,Info,About
 from django.contrib.auth.models import User
 
 def homepage(request):
@@ -7,8 +7,9 @@ def homepage(request):
     services = Service.objects.filter(status=True)[:6]
     products_number = Product.objects.filter(status=True).count()
     products = Product.objects.all()
-    info = Info.objects.all()
+    info = Info.objects.all()[:1]
     user_c = User.objects.all().count()
+    about=About.objects.filter(status=True)[:1]
     contexts = {
         'questions': que ,
         'services': services,
@@ -16,6 +17,7 @@ def homepage(request):
         'products': products ,
         'info': info ,
         'uc' : user_c ,
+        'about': about ,
         
 
     }

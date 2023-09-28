@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block 'content' %}
-{% block 'title' %}inner{% endblock 'title' %}
+{% block 'title' %}hodhod{% endblock 'title' %}
   <!-- ======= Hero Section ======= -->
   <section id="hero">
     <div class="hero-container" data-aos="fade-up" data-aos-delay="150">
@@ -28,7 +28,7 @@
                 <div class="count-box">
                   <i class="bi bi-emoji-smile"></i>
                   <span data-purecounter-start="0" data-purecounter-end="{{uc}}" data-purecounter-duration="1" class="purecounter"></span>
-                  <p>User</p>
+                  <p>کاربران</p>
                 </div>
               </div>
 
@@ -36,7 +36,7 @@
                 <div class="count-box">
                   <i class="bi bi-journal-richtext"></i>
                   <span data-purecounter-start="0" data-purecounter-end="{{p_number}}" data-purecounter-duration="1" class="purecounter"></span>
-                  <p>Products>
+                  <p>محصولات</p>
                 </div>
               </div>
 
@@ -44,18 +44,17 @@
                 <div class="count-box">
                   <i class="bi bi-clock"></i>
                   <span data-purecounter-start="0" data-purecounter-end="{{info.years}}" data-purecounter-duration="1" class="purecounter"></span>
-                  <p>Years of experience</p>
+                  <p>سال سابقه</p>
                 </div>
               </div>
-            </div>
 
-            <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
-              <div class="count-box">
-                <i class="bi bi-award"></i>
-                <span data-purecounter-start="0" data-purecounter-end="{{info.orders}}" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Orders</p>
+              <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+                <div class="count-box">
+                  <i class="bi bi-award"></i>
+                  <span data-purecounter-start="0" data-purecounter-end="{{info.orders}}" data-purecounter-duration="1" class="purecounter"></span>
+                  <p>سفارشات</p>
+                </div>
               </div>
-
 
             </div>
           </div>
@@ -66,13 +65,9 @@
 
 
           <div class="col-lg-6 pt-3 pt-lg-0 content">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+            <h3>{{about.title}}</h3>
             <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
+              {{about.content}}
             </p>
           </div>
 
