@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block 'content' %}
-{% block 'title' %}Product{% endblock 'title' %}
+{% block 'title' %}Products{% endblock 'title' %}
 
     <!-- ======= Courses Section ======= -->
     
@@ -10,7 +10,7 @@
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
 
-          {% for pr in product %}
+          {% for pr in products %}
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="course-item">
               <img src="{{pr.image.url}}" class="img-fluid" alt="...">
@@ -44,13 +44,26 @@
       </div>
     </section><!-- End Courses Section -->
     <div align="center" style="font-size:35px;">
-      <a href="#"><<</a>
+      {% if products.has_next and products.has_previous %}
+      <a href="{{first_page}}"><<</a>
       <a href="#">....</a>
-      <a href="#"><  </a>
+      <a href="{{products.previous_page_number}}"><  </a>
       <a href="#">....</a>
-      <a href="#">></a>
+      <a href="{{products.next_page_number}}">></a>
       <a href="#">....</a>
-      <a href="#">>></a>
+      <a href="{{lasT_page}}">>></a>
+      {% elif products.has_previous %}
+      <a href="{{first_page}}"><<</a>
+      <a href="#">....</a>
+      <a href="{{products.previous_page_number}}"><  </a>
+      <a href="#">....</a>
+      {% elif products.has_next %}
+      <a href="#">....</a>
+      <a href="{{products.next_page_number}}">></a>
+      <a href="#">....</a>
+      <a href="{{lasT_page}}">>></a>
+      {% endif %}
+
     </div>
 
   </main><!-- End #main -->

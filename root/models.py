@@ -56,9 +56,7 @@ class Contact(models.Model):
     title = models.CharField(max_length=30)
     address = models.CharField(max_length=200)
     email = models.EmailField()
-    email2=models.EmailField(null=True)
     call=models.IntegerField()
-    call2=models.IntegerField(null=True)
     twitter=models.TextField(null=True)  
     instagram=models.TextField(null=True)  
     linkdin=models.TextField(null=True)
@@ -85,26 +83,28 @@ class Brand(models.Model):
         ordering = ['-created_date']
 
 
-
-class Category(models.Model):
-    title=models.CharField(max_length=50)
-    status = models.BooleanField(default=True)
-    created_date = models.DateTimeField(auto_now_add=True)
-    updated_date = models.DateTimeField(auto_now=True)
-    def __str__(self):
-        return self.title
-    class Meta:
-        ordering = ['-created_date']
 class Deepcat(models.Model):
     title=models.CharField(max_length=50)
     status = models.BooleanField(default=True)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
-    catname=models.ForeignKey(Category , on_delete=models.CASCADE)
+
     def __str__(self):
         return self.title
     class Meta:
         ordering = ['-created_date']
+
+class Category(models.Model):
+    title=models.CharField(max_length=50)
+    status = models.BooleanField(default=True)
+    deep_cat=models.ManyToManyField(Deepcat)
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return self.title
+    class Meta:
+        ordering = ['-created_date']
+
 class Image(models.Model):
     title=models.CharField(max_length=50)
     img=models.ImageField(upload_to='image/portfolio',default='image/default/default.png')
@@ -119,6 +119,7 @@ class Product(models.Model):
     content = models.TextField()
     brand = models.ForeignKey(Brand , on_delete=models.CASCADE)
     mojoodi=models.IntegerField(default=0)
+    offer = models.IntegerField(default=0)
     image = models.ManyToManyField(Image)
     price = models.IntegerField(default=0)
     category=models.ForeignKey(Category,on_delete=models.CASCADE)
