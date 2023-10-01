@@ -57,11 +57,11 @@ class Contact(models.Model):
     address = models.CharField(max_length=200)
     email = models.EmailField()
     call=models.IntegerField()
-    twitter=models.TextField(null=True)  
-    instagram=models.TextField(null=True)  
-    linkdin=models.TextField(null=True)
-    facebook=models.TextField(null=True)
-    skype=models.TextField(null=True)
+    twitter=models.TextField(null=True,blank=True)  
+    instagram=models.TextField(null=True,blank=True)  
+    linkdin=models.TextField(null=True,blank=True)
+    facebook=models.TextField(null=True,blank=True)
+    skype=models.TextField(null=True,blank=True)
     status = models.BooleanField(default=False)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
@@ -73,7 +73,7 @@ class Contact(models.Model):
 
 class Brand(models.Model):
     name=models.CharField(max_length=50)
-    image = models.ImageField(upload_to='image/brands')
+    image = models.ImageField(upload_to='image/brands',default='image/default/default.png')
     status = models.BooleanField(default=False)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
@@ -82,28 +82,28 @@ class Brand(models.Model):
     class Meta:
         ordering = ['-created_date']
 
-
+class Category(models.Model):
+    title=models.CharField(max_length=50)
+    status = models.BooleanField(default=True)
+    
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return self.title
+    class Meta:
+        ordering = ['-created_date']
 class Deepcat(models.Model):
     title=models.CharField(max_length=50)
     status = models.BooleanField(default=True)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
-
+    cat=models.ForeignKey(Category,on_delete=models.CASCADE)
     def __str__(self):
-        return self.title
+        return f"{self.title}/"
     class Meta:
         ordering = ['-created_date']
 
-class Category(models.Model):
-    title=models.CharField(max_length=50)
-    status = models.BooleanField(default=True)
-    deep_cat=models.ManyToManyField(Deepcat)
-    created_date = models.DateTimeField(auto_now_add=True)
-    updated_date = models.DateTimeField(auto_now=True)
-    def __str__(self):
-        return self.title
-    class Meta:
-        ordering = ['-created_date']
+
 
 class Image(models.Model):
     title=models.CharField(max_length=50)

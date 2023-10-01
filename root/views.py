@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Question,Service,Product,Info,About,Future,Brand,Contact,Category
+from .models import Question,Service,Product,Info,About,Future,Brand,Contact,Category,Deepcat
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 
@@ -15,6 +15,7 @@ def homepage(request):
     brand = Brand.objects.filter(status=True)[:8]
     contact = Contact.objects.filter(status=True)[:1]
     category = Category.objects.filter(status=True)
+    deep_cat = Deepcat.objects.filter(status=True)
     contexts = {
         'questions': que ,
         'services': services,
@@ -27,15 +28,23 @@ def homepage(request):
         'brand' : brand , 
         'contact' : contact ,
         'category' : category ,
+        'deep_cat' : deep_cat ,
 
     }
     return render(request,'root/index.html',context=contexts)
-def products(request):
-    product= Product.objects.filter(status=True)
+def products(request,cat=None,decat=None):
+    if cat :
+        product= Product.objects.filter(category__title=cat,status=True)
+    elif decat :
+        product= Product.objects.filter(deepcat__id=decat,status=True)
+    else:
+          product= Product.objects.filter(status=True)
     category = Category.objects.filter(status=True)
-    product = Paginator(product ,1)
+    deep_cat = Deepcat.objects.filter(status=True)
+    product = Paginator(product ,3)
     first_page=1
     last_page=product.num_pages
+    contact = Contact.objects.filter(status=True)[:1]
     try :
         page_number = request.GET.get('page')
         product = product.get_page(page_number)
@@ -51,6 +60,9 @@ def products(request):
         'category' : category ,
         'first_page':first_page,
         'last_page': last_page ,
+        'deep_cat' : deep_cat , 
+        'contact' : contact,
+        
 
     }
     return render(request,'root/courses.html',context=contexts )

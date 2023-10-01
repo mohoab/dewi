@@ -28,14 +28,6 @@
 
   <!-- Template Main CSS File -->
   <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Dewi
-  * Updated: May 30 2023 with Bootstrap v5.3.0
-  * Template URL: https://bootstrapmade.com/dewi-free-multi-purpose-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -57,17 +49,18 @@
           <li><a class="nav-link scrollto " href="{% url 'root:home' %}#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="{% url 'root:home' %}#about">About</a></li>
           <li><a class="nav-link scrollto" href="{% url 'root:home' %}#services">Services</a></li>
-          <li><a class="nav-link scrollto " href="{% url 'root:home' %}#portfolio">Portfolio</a></li>
+          <li><a class="nav-link scrollto " href="{% url 'root:home' %}#portfolio">Vitrin</a></li>
           <li><a class="nav-link scrollto " href="{% url 'root:products' %}">Products</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'root:home' %}#team">Team</a></li>
           <li class="dropdown"><a href="#"><span>Categories</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               {% for cat in category %}
-              <li class="dropdown"><a href="#"><span>{{cat.title}}</span> <i class="bi bi-chevron-right"></i></a>
+              <li class="dropdown"><a href="{% url 'root:products_cat' cat=cat.title %}"><span>{{cat.title}}</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
-                  {% for dcat in cat.deep_cat.all %}
-                  <li><a href="#">{{dcat.title}}</a></li>
-                  {% endfor %}
+                {% for dcat in deep_cat %}
+                  {% if dcat.cat.title == cat.title %}
+                    <li><a href="{% url 'root:products_dcat' decat=dcat.id %}">{{dcat.title}}</a></li>
+                  {% endif %}
+                {% endfor %}
                 </ul>
               </li>
               {% endfor %}
@@ -90,14 +83,16 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6">
+            {% for contact in contact %}
             <div class="footer-info">
-              <h3>Dewi</h3>
+              <h3>HodHod</h3>
+              
               <p>
-                A108 Adam Street <br>
-                NY 535022, USA<br><br>
-                <strong>Phone:</strong> +1 5589 55488 55<br>
-                <strong>Email:</strong> info@example.com<br>
+                <strong>Address:</strong>{{ contact.address }} <br>
+                <strong>Phone:</strong>+{{contact.call}}<br>
+                <strong>Email:</strong> {{contact.email}}<br>
               </p>
+              
               <div class="social-links mt-3">
                 <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -106,16 +101,18 @@
                 <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
               </div>
             </div>
+            {% endfor %}
           </div>
+
 
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'root:home' %}">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'root:home' %}#about">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'root:home' %}#service">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'root:home' %}#portfolio">Vitrin</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'root:products' %}">Product</a></li>
             </ul>
           </div>
 
