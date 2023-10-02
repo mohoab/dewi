@@ -110,7 +110,7 @@
           {% for br in brand %}
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
               <img src="{{br.image.url}}" class="img-fluid" alt="">
-              {{br.name}}
+              
           </div>
           {% endfor %}
 
@@ -119,37 +119,119 @@
       </div>
     </section><!-- End Clients Section -->
 
-    <!-- ======= Features Section ======= -->
-    <section id="features" class="features">
-      <div class="container" data-aos="fade-up">
+       <!-- ======= Features Section ======= -->
+       {% for que1 in que1 %}
+       {% for que2 in que2 %}
+       {% for que3 in que3 %}
+       {% for que4 in que4 %}
+       <section id="features" class="features">
+        <div class="container" data-aos="fade-up">
+          <ul class="nav nav-tabs row d-flex">
+            <li class="nav-item col-3">
+              <a class="nav-link active show" data-bs-toggle="tab" href="#tab-{{que1.id}}">
+                <i class="ri-gps-line"></i>
+                <h4 class="d-none d-lg-block">{{que1.title}}</h4>
+              </a>
+    
+            </li>
+            <li class="nav-item col-3">
+              
+              <a class="nav-link" data-bs-toggle="tab" href="#tab-{{que2.id}}">
+                <i class="ri-body-scan-line"></i>
+                <h4 class="d-none d-lg-block">{{que2.title}}</h4>
+              </a>
+              
+            </li>
+            <li class="nav-item col-3">
+              
+              <a class="nav-link" data-bs-toggle="tab" href="#tab-{{que3.id}}">
+                <i class="ri-sun-line"></i>
+                <h4 class="d-none d-lg-block">{{que3.title}}</h4>
+              </a>
+             
+            </li>
+            <li class="nav-item col-3">
+              
+              <a class="nav-link" data-bs-toggle="tab" href="#tab-{{que4.id}}">
+                <i class="ri-store-line"></i>
+                <h4 class="d-none d-lg-block">{{que4.title}}</h4>
+              </a>
+              
+            </li>
+          </ul>
+  
+          <div class="tab-content">
+           
+            <div class="tab-pane active show" id="tab-{{que1.id}}">
+              <div class="row">
+                
+                <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                
+                  <h3>{{que1.que}}</h3>
+                  <p class="fst-italic">
+                    {{que1.awnser}}
+                  </p>
+                
+                </div>
+                
 
-      {% for ques in questions %}
-        <ul class="nav nav-tabs row d-flex">
-          </li>
-          <li class="nav-item col-3">
-            <a class="nav-link" data-bs-toggle="tab" href="#tab-{{ques.id}}">
-              <i class="ri-body-scan-line"></i>
-              <h4 class="d-none d-lg-block">{{ques.que}}</h4>
-            </a>
-          </li>
-        </ul>
-
-        <div class="tab-content">
-          <div class="tab-pane" id="tab-{{ques.id}}">
-            <div class="row">
-              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-                <h3>{{ques.title}}</h3>
-                <p>
-                  {{ques.awnser}}
-                </p>
-           </div>   
             </div>
+           
+            
+            <div class="tab-pane" id="tab-{{que2.id}}">
+              <div class="row">
+                
+                <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                
+                  <h3>{{que2.que}}</h3>
+                  <p>
+                    {{que2.awnser}}
+                  </p>
+                
+          
+                </div>
+                
+              </div>
+            </div>
+           
+            <div class="tab-pane" id="tab-{{que3.id}}">
+              <div class="row">
+                
+                <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                
+                  <h3>{{que3.que}}</h3>
+                  <p>
+                    {{que3.awnser}}
+                  </p>
+                
+                </div>
+                
+              </div>
+            </div>
+            
+            <div class="tab-pane" id="tab-{{que4.id}}">
+              <div class="row">
+                
+                <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+               
+                  <h3>{{que4.que}}</h3>
+                  <p>
+                    {{que4.awnser}}
+                  </p>
+                
+                </div>
+                
+              </div>
+            </div>
+            
           </div>
-        </div>
-      {% endfor %}
-      </div>
-    </section><!-- End Features Section -->
 
+        </div>
+      </section><!-- End Features Section -->
+      {% endfor %}
+      {% endfor %}
+      {% endfor %}
+      {% endfor %}
     <!-- ======= Services Section ======= -->
     <section id="services" class="services section-bg">
       <div class="container" data-aos="fade-up">
@@ -172,45 +254,48 @@
       </div>
     </section><!-- End Services Section -->
 
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio">
+    <!-- ======= Popular Courses Section ======= -->
+    <section id="popular-courses" class="courses">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>show case </h2>
-          <p>Check our Products in site showcase </p>
+          <h2>last products</h2>
+          <p>These are a new products </p>
         </div>
 
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-card">Card</li>
-              <li data-filter=".filter-web">Web</li>
-            </ul>
-          </div>
-        </div>
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+        {% for pr in last_three %}
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="course-item">
+              <img src="{{pr.image.img.url}}" class="img-fluid" alt="...">
+              <div class="course-content">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h4>{{pr.category.title}}</h4>
+                  <p class="price">${{pr.price}}</p>
+                </div>
 
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-          {% for pru in product %}
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src={{pru.image.url}} class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>{{pru.title}}</h4>
-              <p>{{pru.category}}/{{pru.category.deepcat}}</p>
-              <p>{{pru.price}}</p>
-              <a href="{{pru.image.url}}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                <h3><a href="course-details.html">{{pr.title}}</a></h3>
+                <p>{{pr.content|truncatewords:4}} ...</p>
+                <div class="trainer d-flex justify-content-between align-items-center">
+                  <div class="trainer-profile d-flex align-items-center">
+                    <span>{{pr.brand.name}}</span>
+                  </div>
+                  <div class="trainer-rank d-flex align-items-center">
+                    <i class="bx bx-user"></i>&nbsp;{{pr.counted_view}}
+                    &nbsp;&nbsp;
+                    <i class="bx bx-heart"></i>&nbsp;{{pr.counted_like}}
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          {% endfor %}
+          </div> <!-- End Course Item-->
+        {% endfor %}
         </div>
 
       </div>
-    </section><!-- End Portfolio Section -->
+    </section><!-- End Popular Courses Section -->
 
-    
+
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
