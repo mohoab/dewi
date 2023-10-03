@@ -240,17 +240,38 @@
           <h2>Services</h2>
           <p>Check our Services</p>
         </div>
-        {% for sr in services %}
-        <div class="row" data-aos="fade-up" data-aos-delay="200" style="width: 90% ;float: left;;clear: both;">
+
+        <div class="row" data-aos="fade-up" data-aos-delay="200">
+        {% for ser1 in ser1%}  
           <div class="col-md-6">
             <div class="icon-box">
-              <i class="bi bi-laptop" style="width: 100% ;float: left;;clear: both;"></i>
-              <h4>{{sr.title}}</h4>
-              <p>{{sr.content}}</p>
+              <i class="bi bi-laptop"></i>
+              <h4><a>{{ser1.title}}</a></h4>
+              <p>{{ser1.content}}</p>
             </div>
           </div>
-        </div>
         {% endfor %}
+        {% for ser3 in ser3 %}
+          <div class="col-md-6 mt-4 mt-md-0">
+            <div class="icon-box">
+              <i class="bi bi-bar-chart"></i>
+              <h4><a>{{ser3.title}}</a></h4>
+              <p>{{ser3.content}}</p>
+            </div>
+          </div>
+        {% endfor %}
+        {% for ser2 in ser2 %}
+          <div class="col-md-6 mt-4 mt-md-0">
+            <div class="icon-box">
+              <i class="bi bi-brightness-high"></i>
+              <h4><a>{{ser2.title}}</a></h4>
+              <p>{{ser2.content}}</p>
+            </div>
+          </div>
+        {% endfor %}
+
+        </div>
+
       </div>
     </section><!-- End Services Section -->
 
@@ -338,7 +359,8 @@
         </div>
 
         <div class="col-lg-6 mt-4 mt-lg-0">
-          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+          <form  method="post" >
+            {%csrf_token%}
             <div class="row">
               <div class="col-md-6 form-group">
                 <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -352,11 +374,6 @@
             </div>
             <div class="form-group mt-3">
               <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-            </div>
-            <div class="my-3">
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your message has been sent. Thank you!</div>
             </div>
             <div class="text-center"><button type="submit">Send Message</button></div>
           </form>

@@ -2,7 +2,7 @@ from django.shortcuts import  render , redirect
 from .models import Question,Service,Product,Info,About,Future,Brand,Contact,Category,Deepcat,Newsletter
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
-from .forms import NewsletterForm
+from .forms import NewsletterForm , ContectForm
 from django.contrib import messages 
 
 def homepage(request):
@@ -12,7 +12,9 @@ def homepage(request):
         que2 = Question.objects.filter(status=True)[1:2]
         que3 = Question.objects.filter(status=True)[2:3]
         que4 = Question.objects.filter(status=True)[3:4]
-        services = Service.objects.filter(status=True)[:6]
+        ser1 = Service.objects.filter(status=True)[:1]
+        ser2 = Service.objects.filter(status=True)[1:3]
+        ser3 = Service.objects.filter(status=True)[3:6]
         products_number = Product.objects.filter(status=True).count()
         products = Product.objects.all()
         info = Info.objects.all()[:1]
@@ -29,7 +31,9 @@ def homepage(request):
             'que2':que2,
             'que3':que3,
             'que4':que4,
-            'services': services,
+            'ser1': ser1,
+            'ser2': ser2,
+            'ser3': ser3,
             'p_number':products_number , 
             'products': products ,
             'info': info ,
@@ -46,7 +50,7 @@ def homepage(request):
 
         }
         return render(request,'root/index.html',context=contexts)
-    elif request.method == 'POST':
+    elif request.method == 'POST' and len(request.POST) ==2 :
         form = NewsletterForm(request.POST)
         if form.is_valid():
             form.save()
@@ -55,7 +59,15 @@ def homepage(request):
         else:
             messages.add_message(request,messages.ERROR,'your email invalid')
             return redirect('root:home')
-        
+    elif request.method == 'POST' and len(request.POST) > 2 :
+        form = ContectForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.add_message(request,messages.SUCCESS,'your message was sent')
+            return redirect('root:home')
+        else:
+            messages.add_message(request,messages.ERROR,'your message isnot true')
+            return redirect('root:home')
               
     
 
