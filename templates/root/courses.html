@@ -19,23 +19,24 @@
                   <h4><p href = "#" >{{pr.category}}</p></h4>
                   <p class="price">${{pr.price}}</p>
                 </div>
-
-                <h3><a href="course-details.html">{{pr.title}}</a></h3>
+                <h3><a href="{% url 'root:detail' id=pr.id %}">{{pr.title}}</a></h3>
                 <p>{{pr.content}}</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
-                    <img src="{{pr.brand.image.url}}" class="img-fluid" alt="">
+                    
                     <span>{{pr.brand.name}}</span>
                   </div>
                   <div class="trainer-rank d-flex align-items-center">
                     <i class="bx bx-user"></i>&nbsp;50
                     &nbsp;&nbsp;
                     <i class="bx bx-heart"></i>&nbsp;65
+                    <br><br><br><br>
                   </div>
                 </div>
               </div>
             </div>
           </div> <!-- End Course Item-->
+          
           {% endfor %}
 
 
@@ -44,22 +45,22 @@
       </div>
     </section><!-- End Courses Section -->
     <div align="center" style="font-size:35px;">
-      {% if products.has_next and products.has_previous %}
+      {% if page_obj.has_next and page_obj.has_previous %}
       <a href="{{first_page}}"><<</a>
       <a href="#">....</a>
-      <a href="{{products.previous_page_number}}"><  </a>
+      <a href="{{page_obj.previous_page_number}}"><  </a>
       <a href="#">....</a>
-      <a href="{{products.next_page_number}}">></a>
+      <a href="{{page_obj.next_page_number}}">></a>
       <a href="#">....</a>
-      <a href="{{lasT_page}}">>></a>
-      {% elif products.has_previous %}
+      <a href="{{last_page}}">>></a>
+      {% elif page_obj.has_previous %}
       <a href="{{first_page}}"><<</a>
       <a href="#">....</a>
-      <a href="{{products.previous_page_number}}"><  </a>
+      <a href="{{page_obj.previous_page_number}}"><  </a>
       <a href="#">....</a>
-      {% elif products.has_next %}
+      {% elif page_obj.has_next %}
       <a href="#">....</a>
-      <a href="{{products.next_page_number}}">></a>
+      <a href="{{page_obj.next_page_number}}">></a>
       <a href="#">....</a>
       <a href="{{lasT_page}}">>></a>
       {% endif %}

@@ -6,5 +6,6 @@ urlpatterns = [
     #path('inner', views.inner,name='inner'),
     path('products', views.products,name='products'),
     path('products/<str:cat>', views.products,name='products_cat'),
-    path('products/<int:decat>', views.products,name='products_dcat'),
+    path('products/<str:decat>', views.products,name='products_dcat'),
+    path('products/detail/<int:id>',views.details,name='detail'),
 ]

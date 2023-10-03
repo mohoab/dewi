@@ -45,33 +45,57 @@ def products(request,cat=None,decat=None):
     if cat :
         product= Product.objects.filter(category__title=cat,status=True)
     elif decat :
-        product= Product.objects.filter(deepcat__id=decat,status=True)
+        product= Product.objects.filter(deepcat=decat,status=True)
     else:
-          product= Product.objects.filter(status=True)
+        product= Product.objects.filter(status=True)
     category = Category.objects.filter(status=True)
     deep_cat = Deepcat.objects.filter(status=True)
-    product = Paginator(product ,3)
-    first_page=1
-    last_page=product.num_pages
     contact = Contact.objects.filter(status=True)[:1]
+    pageinator = Paginator(product,3)
+    first_page=1
+    last_page=pageinator.num_pages
+    
     try :
         page_number = request.GET.get('page')
-        product = product.get_page(page_number)
+        page_obj = pageinator.get_page(page_number)
     except EmptyPage:
-            course = course.get_page(1) 
+            page_obj = pageinator.get_page(1) 
 
     except PageNotAnInteger:
-            product = product.get_page(1) 
+            page_obj = pageinator.get_page(1) 
 
     
     contexts = {
+        'pageinator':pageinator , 
         'products': product ,
         'category' : category ,
         'first_page':first_page,
         'last_page': last_page ,
         'deep_cat' : deep_cat , 
         'contact' : contact,
+        'page_obj' : page_obj, 
         
 
     }
     return render(request,'root/courses.html',context=contexts )
+
+
+def details(request,id=None):
+    if id :
+        #try:
+            product= Product.objects.get(id=id)
+            category = Category.objects.filter(status=True)
+            deep_cat = Deepcat.objects.filter(status=True)
+            contact = Contact.objects.filter(status=True)[:1]
+            context={
+                 'pr':product,
+                 'deep_cat':deep_cat,
+                 'category':category,
+                 'contact':contact,
+            }
+            return render(request,'root/portfolio-details.html',context=context)
+        #except:
+             #return render(request,'root/404.html')
+
+             
+             

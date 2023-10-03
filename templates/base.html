@@ -58,7 +58,7 @@
                 <ul>
                 {% for dcat in deep_cat %}
                   {% if dcat.cat.title == cat.title %}
-                    <li><a href="{% url 'root:products_dcat' decat=dcat.id %}">{{dcat.title}}</a></li>
+                    <li><a href="{% url 'root:products_dcat' decat=dcat %}">{{dcat.title}}</a></li>
                   {% endif %}
                 {% endfor %}
                 </ul>
