@@ -130,8 +130,18 @@
           <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Our Newsletter</h4>
             <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
+            {% if messages %}
+              {% for message in messages %}
+
+                <p style="color:rgb(250, 11, 234)">{{ message}}</p>
+                           
+              {% endfor %}
+              
+            {% endif %}
+            <form method="post">
+              {%csrf_token%}
+              <input type="" name="email">
+              <input type="submit" value="Subscribe">
             </form>
 
           </div>

@@ -10,5 +10,5 @@ admin.site.register(Contact)
 admin.site.register(Brand)
 admin.site.register(Deepcat)
 admin.site.register(Category)
-
+admin.site.register(Newsletter) 
 admin.site.register(Product)
