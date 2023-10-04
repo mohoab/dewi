@@ -10,7 +10,7 @@
 
         <div class="form-body">
             <br>
-            <h2 class="title">Signup</h2>
+            <h2 class="title">Login</h2>
 
             {% if messages %}
             {% for message in messages %}
@@ -33,12 +33,12 @@
                 <input type="submit" >
 
             </form>
-
+            <span>Did you forget password ?</span> <a href="{% url 'password_reset' %}">Reset Password</a>
         </div><!-- FORM BODY-->
 
         <div class="form-footer">
             <div>
-                <span>you have account? Login</span> <a href="">Sign Up</a>
+                <span style="color: black ;">you didnt have account?</span> <a href="{% url 'account:signup' %}" style="color: rgb(245, 5, 5) ;">signup</a>
             </div>
         </div><!-- FORM FOOTER -->
 

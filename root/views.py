@@ -1,6 +1,6 @@
 from django.shortcuts import  render , redirect
 from .models import Question,Service,Product,Info,About,Future,Brand,Contact,Category,Deepcat,Newsletter
-from django.contrib.auth.models import User
+from accounts.models import Customeuser
 from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 from .forms import NewsletterForm , ContectForm
 from django.contrib import messages 
@@ -18,7 +18,7 @@ def homepage(request):
         products_number = Product.objects.filter(status=True).count()
         products = Product.objects.all()
         info = Info.objects.all()[:1]
-        user_c = User.objects.all().count()
+        user_c = Customeuser.objects.all().count()
         about=About.objects.filter(status=True)[:1]
         future = Future.objects.filter(status=True)[:3]
         brand = Brand.objects.filter(status=True)[:7]

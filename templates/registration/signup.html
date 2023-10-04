@@ -10,7 +10,7 @@
 
         <div class="form-body">
             <br>
-            <h2 class="title">Signup</h2>
+            <h2 class="title">Login</h2>
 
             {% if messages %}
             {% for message in messages %}
@@ -38,6 +38,14 @@
                 <br>
                 <input type="password" name="password2" id="password2" placeholder="Confirm your password">
                 <br><br>
+                <label for="mobile">Phone number</label>
+                <br>
+                <input type="text" name="mobile" id="mobile" placeholder="Enter your phone number">
+                <br><br>
+                <label for="userimg">Profile</label>
+                <br>
+                <input type="file" name="userimg" id="userimg" placeholder="Enter your profile picture">
+                <br><br>
                 <input type="submit" >
 
             </form>
@@ -46,7 +54,7 @@
 
         <div class="form-footer">
             <div>
-                <span>you have account? Login</span> <a href="">Sign Up</a>
+                <span style="color: black ;">you have account?</span> <a href="{% url 'account:login' %}" style="color: red;"><br>Login</a>
             </div>
         </div><!-- FORM FOOTER -->
 

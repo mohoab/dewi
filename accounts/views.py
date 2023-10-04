@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from .forms import  CustomUserCreation
-from django.contrib.auth.models import User
+from .models import Customeuser
 
 
 
@@ -20,7 +20,7 @@ def Login(request):
         return render(request,'registration/login.html',context=context)
     else:
         if '@' in request.POST.get('username'):
-            username =User.objects.get(email=request.POST.get('username')).username
+            username =Customeuser.objects.get(email=request.POST.get('username')).username
         form=AuthenticationForm(request.POST)
         username=request.POST.get('username')
         password=request.POST.get('password1')
