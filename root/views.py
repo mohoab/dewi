@@ -24,6 +24,7 @@ def homepage(request):
         brand = Brand.objects.filter(status=True)[:7]
         contact = Contact.objects.filter(status=True)[:1]
         category = Category.objects.filter(status=True)
+        category5 = Category.objects.filter(status=True)[:5]
         deep_cat = Deepcat.objects.filter(status=True)
         last_three = Product.objects.filter(status=True)[:3]
         contexts = {
@@ -45,6 +46,7 @@ def homepage(request):
             'category' : category ,
             'deep_cat' : deep_cat ,
             'last_three':last_three,
+            'category5':category5 ,
             
             
 
@@ -79,6 +81,7 @@ def products(request,cat=None,decat=None):
             product= Product.objects.filter(deepcat=decat,status=True)
         else:
             product= Product.objects.filter(status=True)
+        category5 = Category.objects.filter(status=True)[:5]    
         category = Category.objects.filter(status=True)
         deep_cat = Deepcat.objects.filter(status=True)
         contact = Contact.objects.filter(status=True)[:1]
@@ -105,6 +108,8 @@ def products(request,cat=None,decat=None):
             'deep_cat' : deep_cat , 
             'contact' : contact,
             'page_obj' : page_obj, 
+            'category5': category5,
+
             
 
         }
@@ -127,6 +132,7 @@ def details(request,id=None):
             try:
                 product= Product.objects.get(id=id)
                 category = Category.objects.filter(status=True)
+                category5 = Category.objects.filter(status=True)[:5]
                 deep_cat = Deepcat.objects.filter(status=True)
                 contact = Contact.objects.filter(status=True)[:1]
                 context={
@@ -134,6 +140,7 @@ def details(request,id=None):
                     'deep_cat':deep_cat,
                     'category':category,
                     'contact':contact,
+                    'category5':category5,
                 }
                 return render(request,'root/portfolio-details.html',context=context)
             except:

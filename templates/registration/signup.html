@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'title' %}hodhod{% endblock 'title' %}
+{% block 'content' %}
+<div class="main-container">
+    <div class="form-container">
+        
+        
+
+        <div class="form-body">
+            <br>
+            <h2 class="title">Signup</h2>
+
+            {% if messages %}
+            {% for message in messages %}
+
+              <p style="color:rgb(250, 11, 234)">{{ message}}</p>
+                         
+            {% endfor %}
+            
+            {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                <label for="username">username</label>
+                <br>
+                <input type="text" name="username" id="username" placeholder="Enter your username">
+                <br><br>
+                <label for="email">Email</label>
+                <br>
+                <input type="email" name="email" id="email" placeholder="Enter your email">
+                <br><br>
+                <label for="password1">Password</label>
+                <br>
+                <input type="password" name="password1" id="password1" placeholder="Enter your password">
+                <br><br>
+                <label for="password2">Confirm your Password</label>
+                <br>
+                <input type="password" name="password2" id="password2" placeholder="Confirm your password">
+                <br><br>
+                <input type="submit" >
+
+            </form>
+
+        </div><!-- FORM BODY-->
+
+        <div class="form-footer">
+            <div>
+                <span>you have account? Login</span> <a href="">Sign Up</a>
+            </div>
+        </div><!-- FORM FOOTER -->
+
+    </div><!-- FORM CONTAINER -->
+
+</div>
+{% endblock 'content' %}
