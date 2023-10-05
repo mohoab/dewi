@@ -1,6 +1,5 @@
-<form action={% url 'root:home' %} method="post">
-    {% csrf_token %}
-    {{form}}
-    <button tupe="submit">submit</button>
-</form>
-
+{% for dcat in deep_cat %}
+{% if dcat.cat.title == cat.title %}
+<li><a href="{% url 'root:products_dcat' decat=dcat %}">{{dcat.title}}</a></li>
+                  {% endif %}
+                {% endfor %}

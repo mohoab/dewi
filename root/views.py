@@ -8,10 +8,6 @@ from django.contrib import messages
 def homepage(request):
     if request.method == 'GET':
         
-        que1 = Question.objects.filter(status=True)[0:1]
-        que2 = Question.objects.filter(status=True)[1:2]
-        que3 = Question.objects.filter(status=True)[2:3]
-        que4 = Question.objects.filter(status=True)[3:4]
         ser1 = Service.objects.filter(status=True)[:1]
         ser2 = Service.objects.filter(status=True)[1:3]
         ser3 = Service.objects.filter(status=True)[3:6]
@@ -21,17 +17,13 @@ def homepage(request):
         user_c = Customeuser.objects.all().count()
         about=About.objects.filter(status=True)[:1]
         future = Future.objects.filter(status=True)[:3]
-        brand = Brand.objects.filter(status=True)[:7]
+        brand = Brand.objects.filter(status=True)[:6]
         contact = Contact.objects.filter(status=True)[:1]
         category = Category.objects.filter(status=True)
         category5 = Category.objects.filter(status=True)[:5]
         deep_cat = Deepcat.objects.filter(status=True)
         last_three = Product.objects.filter(status=True)[:3]
         contexts = {
-            'que1': que1 ,
-            'que2':que2,
-            'que3':que3,
-            'que4':que4,
             'ser1': ser1,
             'ser2': ser2,
             'ser3': ser3,
@@ -73,45 +65,26 @@ def homepage(request):
               
     
 
-def products(request,cat=None,decat=None):
+def products(request,cat=None,decat=None,bname=None):
     if request.method == 'GET':
         if cat :
             product= Product.objects.filter(category__title=cat,status=True)
-        elif decat :
-            product= Product.objects.filter(deepcat=decat,status=True)
         else:
             product= Product.objects.filter(status=True)
         category5 = Category.objects.filter(status=True)[:5]    
         category = Category.objects.filter(status=True)
         deep_cat = Deepcat.objects.filter(status=True)
         contact = Contact.objects.filter(status=True)[:1]
-        pageinator = Paginator(product,3)
-        first_page=1
-        last_page=pageinator.num_pages
         
-        try :
-            page_number = request.GET.get('page')
-            page_obj = pageinator.get_page(page_number)
-        except EmptyPage:
-                page_obj = pageinator.get_page(1) 
-
-        except PageNotAnInteger:
-                page_obj = pageinator.get_page(1) 
-
         
-        contexts = {
-            'pageinator':pageinator , 
+        
+        
+        contexts = { 
             'products': product ,
             'category' : category ,
-            'first_page':first_page,
-            'last_page': last_page ,
             'deep_cat' : deep_cat , 
             'contact' : contact,
-            'page_obj' : page_obj, 
-            'category5': category5,
-
-            
-
+            'category5': category5,   
         }
         return render(request,'root/courses.html',context=contexts )
     elif request.method == 'POST':
