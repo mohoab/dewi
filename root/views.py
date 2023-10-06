@@ -21,7 +21,7 @@ def homepage(request):
         user_c = Customeuser.objects.all().count()
         about=About.objects.filter(status=True)[:1]
         future = Future.objects.filter(status=True)[:3]
-        brand = Brand.objects.filter(status=True)[:7]
+        brand = Brand.objects.filter(status=True)[:6]
         contact = Contact.objects.filter(status=True)[:1]
         category = Category.objects.filter(status=True)
         category5 = Category.objects.filter(status=True)[:5]
@@ -73,12 +73,15 @@ def homepage(request):
               
     
 
-def products(request,cat=None,decat=None):
+def products(request,cat=None,decat=None,bname=None):
     if request.method == 'GET':
         if cat :
             product= Product.objects.filter(category__title=cat,status=True)
         elif decat :
-            product= Product.objects.filter(deepcat=decat,status=True)
+            product= Product.objects.filter(deepcat__title=decat,status=True)
+        elif bname :
+            product= Product.objects.filter(brand__name=bname,status=True)
+
         else:
             product= Product.objects.filter(status=True)
         category5 = Category.objects.filter(status=True)[:5]    

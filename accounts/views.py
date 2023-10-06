@@ -48,7 +48,7 @@ def Signup(request):
         
         return render(request,'registration/signup.html',context=context)
     else:
-        form=CustomUserCreation(request.POST)
+        form=CustomUserCreation(request.POST,request.FILES)
         if form.is_valid():
             form.save()
             username=request.POST.get('username')
