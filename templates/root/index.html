@@ -109,7 +109,11 @@
         <div class="row">
           {% for br in brand %}
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+<<<<<<< HEAD
               <a href="{% url 'root:products_brand' bname=br.name %}"><img src="{{br.image.url}}" class="img-fluid" alt=""></a>
+=======
+              <a><img src="{{br.image.url}}" class="img-fluid" alt=""></a>
+>>>>>>> f8c88171771a9d7932aa531210068a6c673307e7
           </div>
           {% endfor %}
 
@@ -118,120 +122,7 @@
       </div>
     </section><!-- End Clients Section -->
 
-       <!-- ======= Features Section ======= -->
-       {% for que1 in que1 %}
-       {% for que2 in que2 %}
-       {% for que3 in que3 %}
-       {% for que4 in que4 %}
-       <section id="features" class="features">
-        <div class="container" data-aos="fade-up">
-          <ul class="nav nav-tabs row d-flex">
-            <li class="nav-item col-3">
-              <a class="nav-link active show" data-bs-toggle="tab" href="#tab-{{que1.id}}">
-                <i class="ri-gps-line"></i>
-                <h4 class="d-none d-lg-block">{{que1.title}}</h4>
-              </a>
-    
-            </li>
-            <li class="nav-item col-3">
-              
-              <a class="nav-link" data-bs-toggle="tab" href="#tab-{{que2.id}}">
-                <i class="ri-body-scan-line"></i>
-                <h4 class="d-none d-lg-block">{{que2.title}}</h4>
-              </a>
-              
-            </li>
-            <li class="nav-item col-3">
-              
-              <a class="nav-link" data-bs-toggle="tab" href="#tab-{{que3.id}}">
-                <i class="ri-sun-line"></i>
-                <h4 class="d-none d-lg-block">{{que3.title}}</h4>
-              </a>
-             
-            </li>
-            <li class="nav-item col-3">
-              
-              <a class="nav-link" data-bs-toggle="tab" href="#tab-{{que4.id}}">
-                <i class="ri-store-line"></i>
-                <h4 class="d-none d-lg-block">{{que4.title}}</h4>
-              </a>
-              
-            </li>
-          </ul>
-  
-          <div class="tab-content">
-           
-            <div class="tab-pane active show" id="tab-{{que1.id}}">
-              <div class="row">
-                
-                <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-                
-                  <h3>{{que1.que}}</h3>
-                  <p class="fst-italic">
-                    {{que1.awnser}}
-                  </p>
-                
-                </div>
-                
-
-            </div>
-           
-            
-            <div class="tab-pane" id="tab-{{que2.id}}">
-              <div class="row">
-                
-                <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-                
-                  <h3>{{que2.que}}</h3>
-                  <p>
-                    {{que2.awnser}}
-                  </p>
-                
-          
-                </div>
-                
-              </div>
-            </div>
-           
-            <div class="tab-pane" id="tab-{{que3.id}}">
-              <div class="row">
-                
-                <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-                
-                  <h3>{{que3.que}}</h3>
-                  <p>
-                    {{que3.awnser}}
-                  </p>
-                
-                </div>
-                
-              </div>
-            </div>
-            
-            <div class="tab-pane" id="tab-{{que4.id}}">
-              <div class="row">
-                
-                <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-               
-                  <h3>{{que4.que}}</h3>
-                  <p>
-                    {{que4.awnser}}
-                  </p>
-                
-                </div>
-                
-              </div>
-            </div>
-            
-          </div>
-
-        </div>
-      </section><!-- End Features Section -->
-      {% endfor %}
-      {% endfor %}
-      {% endfor %}
-      {% endfor %}
-    <!-- ======= Services Section ======= -->
+     <!-- ======= Services Section ======= -->
     <section id="services" class="services section-bg">
       <div class="container" data-aos="fade-up">
 
