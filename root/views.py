@@ -70,10 +70,7 @@ def products(request,cat=None,decat=None,bname=None):
         if cat :
             product= Product.objects.filter(category__title=cat,status=True)
 <<<<<<< HEAD
-        elif decat :
-            product= Product.objects.filter(deepcat__title=decat,status=True)
-        elif bname :
-            product= Product.objects.filter(brand__name=bname,status=True)
+
 
 =======
 >>>>>>> f8c88171771a9d7932aa531210068a6c673307e7
@@ -95,7 +92,7 @@ def products(request,cat=None,decat=None,bname=None):
             'category5': category5,   
         }
         return render(request,'root/courses.html',context=contexts )
-    elif request.method == 'POST':
+         elif request.method == 'POST':
         form = NewsletterForm(request.POST)
         if form.is_valid():
             form.save()
